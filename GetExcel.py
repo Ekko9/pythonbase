@@ -11,7 +11,7 @@ def get_excel(filepath):
 
     sql = '''
     SELECT COUNT(*) 
-    FROM B2C_USER 
+    FROM table 
     WHERE USERFROM <> '5' 
     AND USERTYPE = '1' 
     AND ACCOUNTYPE = '1' 

@@ -12,7 +12,7 @@ FROM
     (
       SELECT DISTINCT ord.order_no
     FROM
-      hu_order_manage ord
+      table_1 ord
     WHERE
       ord.BOOKING_TIME >= TO_DATE('{0} 00:00:00', 'yyyy-MM-dd HH24:mi:ss')
       AND ord.BOOKING_TIME <= TO_DATE('{0} 23:59:59', 'yyyy-MM-dd HH24:mi:ss'))) t1,
@@ -23,7 +23,7 @@ FROM
     (
       SELECT DISTINCT ord.ticket_no
     FROM
-      hu_order_manage ord
+      table_1 ord
     WHERE
       ord.order_status = '3'
       AND ord.order_infosource = '国内'
@@ -38,7 +38,7 @@ FROM
     (
       SELECT DISTINCT ord.ticket_no
     FROM
-      hu_order_manage ord
+      table_1 ord
     WHERE
       ord.order_status = '3'
       AND ord.order_infosource = '国际'
@@ -50,7 +50,7 @@ FROM
     SELECT '{0}' AS currentDate,
     COUNT(1) AS num
   FROM
-    hu_insurance ins
+    table_2 ins
   WHERE
     ins.remark = '购票购保'
 	and ins.INSURANCE_ORDER_NO is not null
@@ -60,7 +60,7 @@ FROM
     SELECT '{0}' AS currentDate,
     COUNT(1) AS num
   FROM
-    HU_PREPAYMENT_BAGGAGE bag
+    table_3 bag
   WHERE
     bag.status = '3'
     AND bag.iss_date >= TO_DATE('{0} 00:00:00', 'yyyy-MM-dd HH24:mi:ss')
